@@ -22,16 +22,19 @@ mobs = {"Sárkány": Mobs(100, random.randrange(25, 50)),
         "Orbán": Mobs(230, random.randrange(25, 50))
         }
 class Player:
-    def __init__(self, hp ,dmg, kepesseg_1, kepesseg_2):
+    def __init__(self, hp ,dmg, kepesseg_1, kepesseg_2, money):
         self.hp = hp
         self.dmg = dmg
         self.kepesseg_1 = kepesseg_1
         self.kepesseg_2 = kepesseg_2
+        self.money = money
+        self.damage_start = player_damage_start
+        self.damage_end = player_damage_end
 
-player_damage_start = 20
-player_damage_end = 50
+player_damage_start = 200
+player_damage_end = 300
 
-player = Player(100, random.randrange(player_damage_start, player_damage_end), 1, 1)
+player = Player(100, random.randrange(player_damage_start, player_damage_end), 1, 1, 50000000)
 
 def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█', printEnd = "\r"):
     percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))

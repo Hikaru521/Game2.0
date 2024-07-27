@@ -4,6 +4,7 @@ from music import play_music
 from music import skip
 from fighting import fighting
 from shop import shop
+import time
 
 map = [
     [20, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 20],
@@ -57,8 +58,6 @@ mobs_pos = [[14, 12], [11, 22], [4, 26], [6, 40], [23, 30], [38, 46], [32, 80], 
 shop_pos = [23, 18]
 
 def move_down():
-    global unlocked_rooms
-
     if map[player_position[0] + 1][player_position[1]] == 1:
         player_position[0] += 1
     elif map[player_position[0] + 1][player_position[1]] == 0:
@@ -67,8 +66,6 @@ def move_down():
         player_position[0] += 1
 
 def move_up():
-    global unlocked_rooms
-
     if map[player_position[0] - 1][player_position[1]] == 1:
         player_position[0] -= 1
     elif map[player_position[0] - 1][player_position[1]] == 0:
@@ -77,8 +74,6 @@ def move_up():
         player_position[0] -= 1
 
 def move_right():
-    global unlocked_rooms
-
     if map[player_position[0]][player_position[1] + 2] == 1:
         player_position[1] += 2
     elif map[player_position[0]][player_position[1] + 2] == 0:
@@ -87,8 +82,6 @@ def move_right():
         player_position[1] += 2
 
 def move_left():
-    global unlocked_rooms
-
     if map[player_position[0]][player_position[1] - 2] == 1:
         player_position[1] -= 2
     elif map[player_position[0]][player_position[1] - 2] == 0:
@@ -100,9 +93,7 @@ def move_left():
 def clear_screen():
     os.system('cls')
 def redraw_map() -> str:
-    global unlocked_rooms
     output: str = ""
-    #print(unlocked_rooms)
     for y, oszlop in enumerate(map):
         for x, value in enumerate(oszlop):
             if y == player_position[0] and x == player_position[1]:
@@ -136,8 +127,18 @@ def main():
         if player_position == shop_pos:
             shop()
         print(redraw_map(), end="")
-        print(player_position)
+        #print(player_position)
         direction: str = input("Console >")
+        if direction == "help":
+            print("Commands:\n"
+                  "-turn on (Music)\n"
+                  "-turn off (Music)\n"
+                  "-skip (Music)\n"
+                  "-a (balra)\n"
+                  "-s (lefelé)\n"
+                  "-w (felfelé)\n"
+                  "-d (jobbra)\n")
+            time.sleep(5)
         match direction:
             case "exit":
                 clear_screen()
@@ -165,3 +166,4 @@ def main():
                 turn_off()
             case _:
                 clear_screen()
+                
