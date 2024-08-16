@@ -4,6 +4,7 @@ from music import play_music
 from music import skip
 from fighting import fighting
 from shop import shop
+from inv import inventory
 import time
 
 map = [
@@ -164,6 +165,8 @@ def main():
             case "turn off":
                 clear_screen()
                 turn_off()
+            case "inventory":
+                inventory()
             case _:
                 clear_screen()
                 

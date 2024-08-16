@@ -22,7 +22,7 @@ mobs = {"Sárkány": Mobs(100, random.randrange(25, 50)),
         "Orbán": Mobs(230, random.randrange(25, 50))
         }
 class Player:
-    def __init__(self, hp ,dmg, kepesseg_1, kepesseg_2, money):
+    def __init__(self, hp ,dmg, kepesseg_1, kepesseg_2, money, poti):
         self.hp = hp
         self.dmg = dmg
         self.kepesseg_1 = kepesseg_1
@@ -30,11 +30,12 @@ class Player:
         self.money = money
         self.damage_start = player_damage_start
         self.damage_end = player_damage_end
+        self.poti = poti
 
 player_damage_start = 200
 player_damage_end = 300
 
-player = Player(100, random.randrange(player_damage_start, player_damage_end), 1, 1, 50000000)
+player = Player(100, random.randrange(player_damage_start, player_damage_end), 1, 1, 50000000, 1)
 
 def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█', printEnd = "\r"):
     percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
@@ -52,7 +53,6 @@ def fighting():
         clear_screen()
         return
     choice = random.choice(mobs_list)
-    potions = 1
     back = 1
     while True:
         enemy = [["Ellenfeled", "Életereje", "Életerőd"],
@@ -79,13 +79,14 @@ def fighting():
                     clear_screen()
                     break
             elif console == "+":
-                if potions == 1:
+                if player.poti == 1:
                     player.hp = player.hp + 50
+                    player.poti -= 1
                     print("Kaptál 50 életerőt!")
                     for i in range(8):
                         printProgressBar(i, 8, prefix='Progress:', suffix='Complete', length=50)
                         time.sleep(0.25)
-                elif potions == 0:
+                elif player.poti == 0:
                     print("Sajnos elfogyott a potionod!")
                     time.sleep(3)
                 player_turn = False
