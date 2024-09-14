@@ -118,6 +118,27 @@ def redraw_map() -> str:
         output += "\n"
     return output
 
+def help():
+    clear_screen()
+    print("Commands:\n"
+        "-turn on (Music)\n"
+        "-turn off (Music)\n"
+        "-skip (Music)\n"
+        "-back (vissza)\n"
+        "-a (balra)\n"
+        "-s (lefelé)\n"
+        "-w (felfelé)\n"
+        "-d (jobbra)\n")
+    print("A játék bármely részén azonnali leállítást tudsz eredményezni a consoleba beírva az exit parancsot!")
+    next = input("Ha megvagy írd be hogy next:")
+    if next == "next":
+        clear_screen()
+        print(redraw_map(), end="")
+    elif next == "exit":
+        exit()
+    else:
+        help()
+
 def main():
     clear_screen()
     while True:
@@ -131,15 +152,7 @@ def main():
         #print(player_position)
         direction: str = input("Console >")
         if direction == "help":
-            print("Commands:\n"
-                  "-turn on (Music)\n"
-                  "-turn off (Music)\n"
-                  "-skip (Music)\n"
-                  "-a (balra)\n"
-                  "-s (lefelé)\n"
-                  "-w (felfelé)\n"
-                  "-d (jobbra)\n")
-            time.sleep(5)
+            help()
         match direction:
             case "exit":
                 clear_screen()
