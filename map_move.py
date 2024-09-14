@@ -124,7 +124,7 @@ def help():
         "-turn on (Music)\n"
         "-turn off (Music)\n"
         "-skip (Music)\n"
-        "-back (vissza)\n"
+        "-break (Kilépsz az adott menüből)\n"
         "-a (balra)\n"
         "-s (lefelé)\n"
         "-w (felfelé)\n"
@@ -182,4 +182,4 @@ def main():
                 inventory()
             case _:
                 clear_screen()
-                
+            

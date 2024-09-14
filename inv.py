@@ -1,6 +1,7 @@
 import os
 from tabulate import tabulate
 from fighting import player
+import time
 
 def clear_screen():
     os.system('cls')
@@ -21,6 +22,11 @@ def inventory():
         if console == "exit":
             clear_screen()
             exit()
-        if console == "back":
+        if console == "break":
+            clear_screen()
+            break
+        else:
+            print("Ez nem választás volt!")
+            time.sleep(1.5)
             clear_screen()
             break
