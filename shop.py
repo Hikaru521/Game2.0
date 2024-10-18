@@ -18,15 +18,15 @@ def shop():
     while True:
         if console == "1":
             clear_screen()
-            shop_armor = [["Páncélok", "Árak", "Vásárlási cimke", "Pénzed"],
-                      ["Sárkánybőr Páncélzat", "50 Lumin", "1", str(player.money) + " Lumin"],
-                      ["Holdfény Vért", "100 Lumin", "2"],
-                      ["Szellemharcos Lemez", "150 Lumin", "3"],
-                      ["Viharkovácsolt Páncél", "200 Lumin", "4"],
-                      ["Fagyisten Páncél", "250 Lumin", "5"],
-                      ["Égkék Lemezvért", "300 Lumin", "6"],
-                      ["Kőóriás Páncélzat", "350 Lumin", "7"],
-                      ["Fényláng Páncélzat", "400 Lumin", "8"],
+            shop_armor = [["Páncélok", "Árak", "Vásárlási cimke", "Új életerő", "Pénzed"],
+                      ["Sárkánybőr Páncélzat", "50 Lumin", "1", player.hp + 50 ,str(player.money) + " Lumin"],
+                      ["Holdfény Vért", "100 Lumin", "2", player.hp + 100],
+                      ["Szellemharcos Lemez", "150 Lumin", "3", player.hp + 150],
+                      ["Viharkovácsolt Páncél", "200 Lumin", "4", player.hp + 200],
+                      ["Fagyisten Páncél", "250 Lumin", "5", player.hp + 250],
+                      ["Égkék Lemezvért", "300 Lumin", "6", player.hp + 300],
+                      ["Kőóriás Páncélzat", "350 Lumin", "7", player.hp + 350],
+                      ["Fényláng Páncélzat", "400 Lumin", "8", player.hp + 400],
                           ]
             print(tabulate(shop_armor, headers='firstrow', tablefmt='grid'))
             console = input("Console >")
